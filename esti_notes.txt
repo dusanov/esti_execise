@@ -1,0 +1,34 @@
+ update-alternatives --list java
+ sudo update-alternatives --set java /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java
+ sudo update-alternatives --set java /usr/lib/jvm/java-11-openjdk-amd64/bin/java
+ 
+ ~~~~~~~~~~~~~~~~~~~~~~~
+ microservices vs java modules* not !
+ https://dzone.com/articles/multi-module-monolithic-as-microservice
+ ~~~~~~~~~~~~~~~~~~~~~~~~~
+ slo burn !
+ https://www.youtube.com/watch?v=0cs2W3T2mzk
+ ~~~~~~~~~~~~~~~~~~~~~~
+ 
+ postgres:
+ =========
+ sudo service postgresql start
+ sudo su - postgres
+ psql
+ 
+ CREATE DATABASE esti_commhub_articles
+ \l -- list databases
+ 
+postgres@4umz0r20:~$ createuser --interactive --pwprompt
+Enter name of role to add: dusan
+Enter password for new role:
+Enter it again:
+Shall the new role be a superuser? (y/n) n
+Shall the new role be allowed to create databases? (y/n) n
+Shall the new role be allowed to create more new roles? (y/n) n
+ 
+ 
+ execute ddl:
+ psql -v ON_ERROR_STOP=1 -1 -h the.server.hostname -f my_script.sql the_database
+ 
+ psql -v ON_ERROR_STOP=1 -1 -h localhost -f 08_12_2020_1_create_articles_table.sql esti_commhub_articles

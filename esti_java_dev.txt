@@ -1,0 +1,26 @@
+JAVA DEVELOPER
+==============
+WHAT WILL YOU DO
+Together with the team you will drive the continuous improvement and further development of applications bringing new features into production. 
+These applications are the central backend systems for various products in the internet access and device management. You will develop microservices using technologies and concepts that continuously drive the digitalization. You will play a role in, design, implementation, testing to deployment and operation. You will also automate repetitive processes as part of the CI/CD pipeline. And you will manage processes and bear operational responsibility within your team.
+
+WHY YOU SUCCEED
+You are interested in the latest technologies and are actively involved in discussions;
+You enjoy programming and implement innovations pragmatically and effectively;
+You are open-mindedness  and want to contribute to the further development of our team;
+You work best in an environment that has flat hierarchies and strong autonomy in the team;
+You understand complex requirements and break them down into simpler tasks;
+You fit well into a self-organizing, agile teams;
+You are motivated to acquire new skills.
+
+WHAT DO YOU NEED
+Bachelor or master degree in computer science with focus on software engineering;
+Several years of experience in Java;
+Knowledge of Spring Boot, databases, RESTful APIs, CloudFoundry, Splunk or Jenkins are a plus;
+Excellent English.
+
+PERKS
+An enterprising and driven work environment;
+Enthusiastic colleagues;
+Great business parties;
+30 procent ruling, meaning that 30 procent of the salary is taxfree.

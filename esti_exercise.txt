@@ -1,0 +1,81 @@
+Communication hub
+==================
+A communication software which collects and reformulates information for our customers, agents and other collaborators.
+Website
+	Articles
+		News
+		Discounts / Offers
+		New packages
+		New devices
+	Email Subscription management
+	Customer Help and Support
+Emails
+	Newsletter Emails, 
+	Single-Purpose Emails, 
+	Segmented Single-Purpose Emails
+
+	
+Central Backend Systems
+=======================
+Various products in the internet access and device management
+
+Customer
+	Customer data
+Product
+	Internet
+		bandwith packages
+		routers
+	Land line telephony
+	TV
+		Netflix
+		packages
+	Mobile
+		smart phones
+		tablets
+		accessories
+		pre paid
+		post paid
+	Covid app
+
+
+Tech Stack
+==========
+Scrum / TDD / Microservices
+Angular JS, RXJS,
+Java, Spring Boot, RESTfull!  
+Kafka ?
+Git
+Maven (CloudFoundry, Splunk or Jenkins are a plus)
+Databases
+
+User Stories Backlog:
+=====================
+CH3 As an agent I want to be able to enter new Article so that it appears on CommHub website
+CH4 As an agent I want to be able to create new Newsletters, SSP and SSSP emails and schedule them to be sent at particular time 	
+CH1 As a customer/visitor I want to be able to register with the CommHub so that I can subscribe to newsletters and SSPs 
+CH2 As a customer/visitor I want to be able to register with the CommHub so that I can use Customer support
+
+CBS3 As a sysadmin I want to be able to administer company products
+CBS1 As a desk clerk I want to be able to enter new customer
+CBS2 As a desk clerk I want to be able to administer customer products	
+
+EoW: 0, 0.5, 1, 2, 3, 5, 8, 13, 20, 40, 100
+
+Sprint 1:
+========
+CH3		EoW= 40
+CBS3	EoW= 40
+
+CH3 Breakdown:
+==============
+Create database Articles 
+	* 100%  // observed was a need for additioinal tables like article type and user
+Create Spring Boot RESTFull endpoint Articles
+Create Angular App to manage Articles
+Create Angular App to display Articles list and detail
+
+CBS3 Breakdown:
+===============
+Create database Products with packages / plans / product data structure
+Create Spring Boot RESTFull endpoint for Products
+Create Angular App to manage Products
