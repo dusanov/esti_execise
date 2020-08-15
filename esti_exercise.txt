@@ -51,13 +51,13 @@ Databases
 User Stories Backlog:
 =====================
 CH3 As an agent I want to be able to enter new Article so that it appears on CommHub website
+CH5 As a customer/visitor I want to be able to register
 CH4 As an agent I want to be able to create new Newsletters, SSP and SSSP emails and schedule them to be sent at particular time 	
-CH1 As a customer/visitor I want to be able to register with the CommHub so that I can subscribe to newsletters and SSPs 
-CH2 As a customer/visitor I want to be able to register with the CommHub so that I can use Customer support
+CH1 As a customer/visitor I want to be able to subscribe to newsletters and SSPs 
+CH2 As a customer/visitor I want to be able to use Customer support
 
 CBS3 As a sysadmin I want to be able to administer company products
-CBS1 As a desk clerk I want to be able to enter new customer
-CBS2 As a desk clerk I want to be able to administer customer products	
+CBS1 As a desk clerk I want to be able to enter new customer and to administer customer products
 
 EoW: 0, 0.5, 1, 2, 3, 5, 8, 13, 20, 40, 100
 
@@ -73,6 +73,7 @@ Create database Articles
 Create Spring Boot RESTFull endpoint Articles
 	* 70% //missing swagger and test
 	* 80% added swagger
+	* todo: make it restFULL
 Create Angular App to manage Articles
 Create Angular App to display Articles list and detail
 
