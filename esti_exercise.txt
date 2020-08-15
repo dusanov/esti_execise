@@ -71,7 +71,8 @@ CH3 Breakdown:
 Create database Articles 
 	* 100%  // observed was a need for additioinal tables like article type and user
 Create Spring Boot RESTFull endpoint Articles
-	* 70% //missing swagger and test 
+	* 70% //missing swagger and test
+	* 80% added swagger
 Create Angular App to manage Articles
 Create Angular App to display Articles list and detail
 

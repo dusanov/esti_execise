@@ -1,5 +1,7 @@
 package me.dusanov.esti.commhub.articles.model;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
 
 import lombok.AllArgsConstructor;
@@ -12,10 +14,12 @@ import lombok.NoArgsConstructor;
 @Table("articles")
 public class Article {
 	
+	@Id	
 	private Integer articleId;
 	private String articleTitle;
+	@Column("article_short_desc")
 	private String articleDesc;
-	private int article_type;
+	private int articleType;
 	private String articleText;
 	private String articleImage;
 	/*

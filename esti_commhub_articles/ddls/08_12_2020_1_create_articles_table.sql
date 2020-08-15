@@ -6,11 +6,11 @@ CREATE TABLE articles (
 	article_short_desc VARCHAR (255) NOT NULL,
 	article_type INT,
 	article_text TEXT NOT NULL,
-	article_image VARCHAR (50),
-	created_by INT,
-	created_on TIMESTAMP NOT NULL,
-    modified_by INT,
-	modified_on TIMESTAMP
+	article_image VARCHAR (50)
+	--created_by INT,
+	--created_on TIMESTAMP NOT NULL,
+    --modified_by INT,
+	--modified_on TIMESTAMP
 	--FOREIGN KEY (article_type)
     --  REFERENCES article_types (article_type_id),
 	--FOREIGN KEY (created_by)

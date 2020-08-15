@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import me.dusanov.esti.commhub.articles.model.Article;
 import me.dusanov.esti.commhub.articles.service.ArticleService;
 import reactor.core.publisher.Flux;
@@ -23,7 +22,6 @@ import reactor.core.publisher.Mono;
 
 @RestController
 @RequestMapping("/articles")
-@Slf4j
 @RequiredArgsConstructor
 public class ArticleController {
 	
@@ -37,7 +35,6 @@ public class ArticleController {
 
     @GetMapping
     public Flux<Article> getAllArticles(){
-    	log.debug("=== Get all articles hit !@ ===");
     	return articleService.getAllArticles();
     }
 
@@ -56,8 +53,8 @@ public class ArticleController {
     }
 
     @DeleteMapping("/{articleId}")
-    public Mono<ResponseEntity<Void>> deleteArticleById(@PathVariable Integer ArticleId){
-        return articleService.deleteArticle(ArticleId)
+    public Mono<ResponseEntity<Void>> deleteArticleById(@PathVariable Integer articleId){
+        return articleService.deleteArticle(articleId)
                 .map( r -> ResponseEntity.ok().<Void>build())
                 .defaultIfEmpty(ResponseEntity.notFound().build());
     }
