@@ -8,6 +8,10 @@
  ~~~~~~~~~~~~~~~~~~~~~~~~~
  slo burn !
  https://www.youtube.com/watch?v=0cs2W3T2mzk
+ github arctic code vault
+ https://youtu.be/fzI9FNjXQ0o
+ ~~~~~~~~~~~~~~~~~~~~~~~~
+ https://medium.com/@dassum/building-a-reactive-restful-web-service-using-spring-boot-and-postgres-c8e157dbc81d
  ~~~~~~~~~~~~~~~~~~~~~~
  
  postgres:
@@ -28,7 +32,10 @@ Shall the new role be allowed to create databases? (y/n) n
 Shall the new role be allowed to create more new roles? (y/n) n
  
  
- execute ddl:
- psql -v ON_ERROR_STOP=1 -1 -h the.server.hostname -f my_script.sql the_database
- 
- psql -v ON_ERROR_STOP=1 -1 -h localhost -f 08_12_2020_1_create_articles_table.sql esti_commhub_articles
+execute ddl:
+============
+psql -v ON_ERROR_STOP=1 -1 -h the.server.hostname -f my_script.sql the_database
+psql -v ON_ERROR_STOP=1 -1 -h localhost -f 08_12_2020_1_create_articles_table.sql esti_commhub_articles
+
+netty access logging:
+mvn spring-boot:run -Dreactor.netty.http.server.accessLogEnabled=true

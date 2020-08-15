@@ -42,7 +42,7 @@ Tech Stack
 ==========
 Scrum / TDD / Microservices
 Angular JS, RXJS,
-Java, Spring Boot, RESTfull!  
+Java, Spring Boot, RESTfull, Swagger
 Kafka ?
 Git
 Maven (CloudFoundry, Splunk or Jenkins are a plus)
@@ -61,7 +61,7 @@ CBS2 As a desk clerk I want to be able to administer customer products
 
 EoW: 0, 0.5, 1, 2, 3, 5, 8, 13, 20, 40, 100
 
-Sprint 1:
+Sprint 1 (12-19.VIII):
 ========
 CH3		EoW= 40
 CBS3	EoW= 40
@@ -71,6 +71,7 @@ CH3 Breakdown:
 Create database Articles 
 	* 100%  // observed was a need for additioinal tables like article type and user
 Create Spring Boot RESTFull endpoint Articles
+	* 70% //missing swagger and test 
 Create Angular App to manage Articles
 Create Angular App to display Articles list and detail
 
