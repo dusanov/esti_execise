@@ -1,0 +1,28 @@
+package me.dusanov.esti.commhub.articles.config;
+
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.reactive.config.WebFluxConfigurer;
+
+@Configuration
+//@EnableSwagger2
+public class SwaggerConfiguration implements WebFluxConfigurer {
+/*
+	@Bean
+    public Docket api() {
+        return new Docket(DocumentationType.SWAGGER_2)
+                .apiInfo(apiInfo())
+                .enable(true)
+                //.genericModelSubstitutes(Mono.class, Flux.class, Publisher.class)
+                .select()
+                .apis(RequestHandlerSelectors.any())
+                .paths(PathSelectors.any())
+                .build();
+    }
+
+    private ApiInfo apiInfo(){
+        return new ApiInfoBuilder().title("Reactive Articles Service")
+                                    .description("Reactive Articles Service")
+                                    .version("1.0").build();
+    }
+*/	
+}
