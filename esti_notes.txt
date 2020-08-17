@@ -6,6 +6,8 @@
  microservices vs java modules* not !
  https://dzone.com/articles/multi-module-monolithic-as-microservice
  ~~~~~~~~~~~~~~~~~~~~~~~~~
+ https://technology.amis.nl/2020/04/10/spring-blocking-vs-non-blocking-r2dbc-vs-jdbc-and-webflux-vs-web-mvc/
+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  slo burn !
  https://www.youtube.com/watch?v=0cs2W3T2mzk
  github arctic code vault
