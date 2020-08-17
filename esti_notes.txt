@@ -13,6 +13,10 @@
  ~~~~~~~~~~~~~~~~~~~~~~~~
  https://medium.com/@dassum/building-a-reactive-restful-web-service-using-spring-boot-and-postgres-c8e157dbc81d
  ~~~~~~~~~~~~~~~~~~~~~~
+ brant bjork - jalamanta
+ https://www.youtube.com/watch?v=aqkgf04OXAY
+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ http://reactivex.io/rxjs/manual/overview.html
  
  postgres:
  =========
