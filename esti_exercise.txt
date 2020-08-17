@@ -61,7 +61,7 @@ CBS1 As a desk clerk I want to be able to enter new customer and to administer c
 
 EoW: 0, 0.5, 1, 2, 3, 5, 8, 13, 20, 40, 100
 
-Sprint 1 (12-19.VIII):
+Sprint 1 (12-26.VIII):
 ========
 CH3		EoW= 40
 CBS3	EoW= 40
@@ -73,7 +73,8 @@ Create database Articles
 Create Spring Boot RESTFull endpoint Articles
 	* 70% //missing swagger and test
 	* 80% added swagger
-	* todo: make it restFULL
+	* todo: H2 articleText to implement CLOB reactive converter
+	* 97% article controller test done, got one tech debt above
 Create Angular App to manage Articles
 Create Angular App to display Articles list and detail
 
