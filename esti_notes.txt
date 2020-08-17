@@ -15,6 +15,11 @@
  ~~~~~~~~~~~~~~~~~~~~~~~~
  https://medium.com/@dassum/building-a-reactive-restful-web-service-using-spring-boot-and-postgres-c8e157dbc81d
  ~~~~~~~~~~~~~~~~~~~~~~
+ brant bjork - jalamanta
+ https://www.youtube.com/watch?v=aqkgf04OXAY
+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ http://reactivex.io/rxjs/manual/overview.html
+ https://rxjs-dev.firebaseapp.com/
  
  postgres:
  =========
@@ -44,3 +49,13 @@ mvn spring-boot:run -Dreactor.netty.http.server.accessLogEnabled=true
 
 undo last commit:
 $ git reset --soft HEAD~1
+===========================
+
+angular:
+ng serve --open
+http://localhost:4200/
+
+https://angular.io/tutorial/toh-pt0
+http://reactivex.io/rxjs/manual/overview.html#multicasted-observables
+http://reactivex.io/rxjs/manual/tutorial.html
+https://rxjs-dev.firebaseapp.com/guide/overview
