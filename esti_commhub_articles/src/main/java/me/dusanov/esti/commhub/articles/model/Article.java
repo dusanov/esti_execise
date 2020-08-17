@@ -4,6 +4,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
 
+import io.r2dbc.spi.Clob;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,7 +21,9 @@ public class Article {
 	@Column("article_short_desc")
 	private String articleDesc;
 	private int articleType;
+	//todo: this is clob
 	private String articleText;
+	//private Clob articleText;
 	private String articleImage;
 	/*
 	created_by INT,

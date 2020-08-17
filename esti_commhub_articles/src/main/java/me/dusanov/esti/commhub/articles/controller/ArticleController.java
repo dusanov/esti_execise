@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import me.dusanov.esti.commhub.articles.model.Article;
 import me.dusanov.esti.commhub.articles.service.ArticleService;
 import reactor.core.publisher.Flux;
@@ -23,6 +24,7 @@ import reactor.core.publisher.Mono;
 @RestController
 @RequestMapping("/articles")
 @RequiredArgsConstructor
+@Slf4j
 public class ArticleController {
 	
 	private final ArticleService articleService;	
@@ -47,6 +49,7 @@ public class ArticleController {
 
     @PutMapping("/{articleId}")
     public Mono<ResponseEntity<Article>> updateArticleById(@PathVariable Integer articleId, @RequestBody Article article){
+    	log.debug(" === got: " + article  + ", article id:  " + articleId);
         return articleService.updateArticle(articleId,article)
                 .map(updatedArticle -> ResponseEntity.ok(updatedArticle))
                 .defaultIfEmpty(ResponseEntity.badRequest().build());
