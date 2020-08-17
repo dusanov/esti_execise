@@ -47,3 +47,13 @@ mvn spring-boot:run -Dreactor.netty.http.server.accessLogEnabled=true
 
 undo last commit:
 $ git reset --soft HEAD~1
+===========================
+
+angular:
+ng serve --open
+http://localhost:4200/
+
+https://angular.io/tutorial/toh-pt0
+http://reactivex.io/rxjs/manual/overview.html#multicasted-observables
+http://reactivex.io/rxjs/manual/tutorial.html
+https://rxjs-dev.firebaseapp.com/guide/overview
