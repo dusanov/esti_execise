@@ -107,18 +107,21 @@ public class ArticlesControllerTest {
                 .verifyComplete();
 
     }
+    
     @Test
     public void getArticleById(){
         webTestClient.get().uri("/articles".concat("/{articleId}"),"1")
                             .exchange().expectStatus().isOk()
                             .expectBody()
-                            .jsonPath("$.name","Suman Das");
+                            .jsonPath("$.articleTitle").isEqualTo("title1");
     }
+    
     @Test
     public void getArticleById_NotFound(){
         webTestClient.get().uri("/articles".concat("/{articleId}"),"6")
                 .exchange().expectStatus().isNotFound();
     }
+    
     @Test
     public void createArticle(){
         Article user = new Article(null,"titlex","desc x",0,"text x","image x");
@@ -130,6 +133,7 @@ public class ArticlesControllerTest {
                             .jsonPath("$.articleId").isNotEmpty()
                             .jsonPath("$.articleTitle").isEqualTo("titlex");
     }
+    
     @Test
     public void deleteArticle(){
         webTestClient.delete().uri("/articles".concat("/{articleId}"),"1")
@@ -138,6 +142,7 @@ public class ArticlesControllerTest {
                      .expectStatus().isOk()
                      .expectBody(Void.class);
     }
+    
     @Test
     public void updateArticle(){
         String newImage = "new image";
@@ -151,6 +156,7 @@ public class ArticlesControllerTest {
                         .expectBody()
                         .jsonPath("$.articleImage").isEqualTo(newImage);
     }
+    
     @Test
     public void updateArticle_notFound(){
         String newImage = "12345";
