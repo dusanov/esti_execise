@@ -17,6 +17,7 @@
  https://www.youtube.com/watch?v=aqkgf04OXAY
  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  http://reactivex.io/rxjs/manual/overview.html
+ https://rxjs-dev.firebaseapp.com/
  
  postgres:
  =========
