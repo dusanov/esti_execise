@@ -59,3 +59,6 @@ https://angular.io/tutorial/toh-pt0
 http://reactivex.io/rxjs/manual/overview.html#multicasted-observables
 http://reactivex.io/rxjs/manual/tutorial.html
 https://rxjs-dev.firebaseapp.com/guide/overview
+
+css:
+https://getbootstrap.com/docs/4.5/layout/overview/
