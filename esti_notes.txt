@@ -18,6 +18,9 @@
  brant bjork - jalamanta
  https://www.youtube.com/watch?v=aqkgf04OXAY
  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ Unida !
+https://www.youtube.com/watch?v=BT8XN9Mhrh8&list=RD5HogA9u4CYc&index=6
+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  http://reactivex.io/rxjs/manual/overview.html
  https://rxjs-dev.firebaseapp.com/
  
@@ -62,8 +65,11 @@ https://rxjs-dev.firebaseapp.com/guide/overview
 
 css:
 https://getbootstrap.com/docs/4.5/layout/overview/
+<<<<<<< HEAD
 
 Call REST-full API’s | Web services using Angular and RxJS.
 https://medium.com/@AnkitMaheshwariIn/call-rest-api-web-services-using-angular-and-rxjs-4f00e833a65
 Angular tutorial
 https://angular.io/tutorial/toh-pt6
+=======
+>>>>>>> 1335ee3f59cc94ddb0ae035eafaca2d6dfd52b0b
