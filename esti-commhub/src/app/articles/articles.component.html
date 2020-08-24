@@ -1,0 +1,8 @@
+<!-- {{(result$|async)|json}} -->
+
+<div *ngIf="null === (result$ | async | json)">Loading...</div>
+<div class="row"> <!-- *ngIf="result$"-->
+    <div class="col" *ngFor="let article of result$">
+        {{article}} your self
+    </div>
+</div>

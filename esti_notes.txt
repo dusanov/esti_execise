@@ -62,3 +62,8 @@ https://rxjs-dev.firebaseapp.com/guide/overview
 
 css:
 https://getbootstrap.com/docs/4.5/layout/overview/
+
+Call REST-full API’s | Web services using Angular and RxJS.
+https://medium.com/@AnkitMaheshwariIn/call-rest-api-web-services-using-angular-and-rxjs-4f00e833a65
+Angular tutorial
+https://angular.io/tutorial/toh-pt6
