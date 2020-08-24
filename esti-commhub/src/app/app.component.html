@@ -1,7 +1,15 @@
-<div class="container"><h1>Welcome to {{title}}</h1>
+<div class="container">
+    <h1 class="display-3">Welcome to {{title}}</h1>
+    <nav>
+        <a routerLink="/articles">Home</a>
+      </nav>
     <div class="container">
         <div class="row">
+            <!--
             <app-articles></app-articles>
+            <app-article-detail></app-article-detail>
+            -->
+            <router-outlet></router-outlet>
         </div>
     </div>
 </div>

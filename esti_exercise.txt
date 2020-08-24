@@ -78,6 +78,7 @@ Create Spring Boot RESTFull endpoint Articles
 Create Angular App to manage Articles
 	* 10% installed and created intial app
 Create Angular App to display Articles list and detail
+	* 100% it's ugly but it works
 
 CBS3 Breakdown:
 ===============

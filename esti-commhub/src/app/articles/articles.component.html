@@ -1,8 +1,21 @@
 <!-- {{(result$|async)|json}} -->
-
-<div *ngIf="null === (result$ | async | json)">Loading...</div>
+<!--  | async  | json  -->
+<div *ngIf="null === (articles)">Loading...</div>
 <div class="row"> <!-- *ngIf="result$"-->
-    <div class="col" *ngFor="let article of result$">
-        {{article}} your self
+    <div class="col card" *ngFor="let article of articles">
+        <div class="card-body">        
+            <img ng-src="{{article.articleImage}}" class="card-img-top" alt="article image">
+            <h3 class="display-4">
+                <a routerLink="/article/{{article.articleId}}">
+                    <span class="card-title">
+                        {{article.articleTitle}}
+                    </span>
+                </a>    
+            </h3>
+            <div class="card-text">
+                {{article.articleDesc}}
+            </div>
+            <!-- <p class="card-text"> {{article.articleText}}</p> -->
+        </div>
     </div>
 </div>
