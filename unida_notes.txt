@@ -30,7 +30,7 @@ https://www.youtube.com/watch?v=BT8XN9Mhrh8&list=RD5HogA9u4CYc&index=6
  sudo su - postgres
  psql
  
- CREATE DATABASE esti_commhub_articles
+ CREATE DATABASE unida_commhub_articles
  \l -- list databases
  
 postgres@4umz0r20:~$ createuser --interactive --pwprompt
@@ -45,7 +45,7 @@ Shall the new role be allowed to create more new roles? (y/n) n
 execute ddl:
 ============
 psql -v ON_ERROR_STOP=1 -1 -h the.server.hostname -f my_script.sql the_database
-psql -v ON_ERROR_STOP=1 -1 -h localhost -f 08_12_2020_1_create_articles_table.sql esti_commhub_articles
+psql -v ON_ERROR_STOP=1 -1 -h localhost -f 08_12_2020_1_create_articles_table.sql unida_commhub_articles
 
 netty access logging:
 mvn spring-boot:run -Dreactor.netty.http.server.accessLogEnabled=true
