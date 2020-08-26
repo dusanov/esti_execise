@@ -5,7 +5,7 @@ spring:
 spring:
   profiles: dev
   r2dbc:
-    url: r2dbc:postgresql://localhost:5432/esti_commhub_articles
+    url: r2dbc:postgresql://localhost:5432/unida_commhub_articles
     username: dusan
     password: dusan
 logging:
