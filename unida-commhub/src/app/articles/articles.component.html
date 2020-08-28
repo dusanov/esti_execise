@@ -3,14 +3,14 @@
 <div *ngIf="null === (articles)">Loading...</div>
 <div class="row"> <!-- *ngIf="result$"-->
     <div class="col card" *ngFor="let article of articles">
-        <div class="card-body">        
+        <div class="card-body">
             <img ng-src="{{article.articleImage}}" class="card-img-top" alt="article image">
             <h3 class="display-4">
-                <a routerLink="/article/{{article.articleId}}">
+                <a routerLink="/article/{{article.id}}">
                     <span class="card-title">
                         {{article.articleTitle}}
                     </span>
-                </a>    
+                </a>
             </h3>
             <div class="card-text">
                 {{article.articleDesc}}
