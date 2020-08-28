@@ -1,1 +1,11 @@
-<p>article-detail works!</p>
+<div *ngIf="article">
+
+  <h2>{{article.articleTitle | uppercase}} Details</h2>
+  <div><span>Desciption: </span>{{article.articleDesc}}</div>
+  <div>
+    <label>Text:
+      <input [(ngModel)]="article.articleText" placeholder="articleText"/>
+    </label>
+  </div>
+
+</div>
