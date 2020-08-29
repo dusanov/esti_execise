@@ -3,6 +3,7 @@ import { Article } from '../Article';
 import { ArticlesService} from '../service/articles.service';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
+import { State } from './State';
 
 @Component({
   selector: 'app-article-detail',
@@ -12,6 +13,9 @@ import { Location } from '@angular/common';
 export class ArticleDetailComponent implements OnInit {
 
   @Input() article: Article;
+
+  public StateEnum = State;
+  public mode = State.view;
 
   constructor(
     private route: ActivatedRoute,
@@ -29,9 +33,21 @@ export class ArticleDetailComponent implements OnInit {
       .subscribe(article => this.article = article);
   }
 
+  new(): void{
+    this.article = <Article>{};
+    this.mode = State.edit;
+  }
+
+  edit(): void{
+    this.mode = State.edit;
+  }
+
   save(): void {
     this.articlesService.updateArticle(this.article)
-      .subscribe(/*() => this.goBack()*/);
+      .subscribe( article => {
+        this.mode = State.view;
+        //this.article = article;
+      });
   }
 
 }

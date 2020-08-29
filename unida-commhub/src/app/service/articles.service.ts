@@ -7,6 +7,7 @@ import { catchError, map, tap } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
+
 export class ArticlesService {
 
   httpOptions = {
@@ -53,8 +54,6 @@ export class ArticlesService {
 
       // Let the app keep running by returning an empty result.
       return of(result as T);
-  };
-}
-
-
+    };
+  }
 }

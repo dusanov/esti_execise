@@ -1,10 +1,33 @@
 <div *ngIf="article">
-
-  <h2>{{article.articleTitle | uppercase}}</h2>
-  <small class="text-muted">{{article.articleDesc}}</small>
-  <div>
-    <p>{{article.articleText}}</p>
+  <!-- depending on mode [VIEW,EDIT,NEW] render either input or view html -->
+  <div *ngIf="mode === StateEnum.view">
+    <h2>{{article.articleTitle | uppercase}}</h2>
+    <small class="text-muted">{{article.articleDesc}}</small>
+    <div>
+      <p>{{article.articleText}}</p>
+    </div>
   </div>
+
+  <div *ngIf="mode === StateEnum.edit">
+    <div>
+      <span>Article title: </span>
+      <br/>
+    <input type='text' value={{article.articleTitle}}>
+    </div>
+    <div>
+      <br/>
+      <span>Article description: </span>
+      <br/>
+      <textarea class="text-muted">{{article.articleDesc}}</textarea>
+    </div>
+    <div>
+      <br/>
+      <span>Article text: </span>
+      <br/>
+      <textarea>{{article.articleText}}</textarea>
+    </div>
+  </div>
+
   <button (click)="new()">new</button>
   <button (click)="edit()">edit</button>
   <button (click)="save()">save</button>
