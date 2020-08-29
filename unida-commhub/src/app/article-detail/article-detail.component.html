@@ -1,11 +1,12 @@
 <div *ngIf="article">
 
-  <h2>{{article.articleTitle | uppercase}} Details</h2>
-  <div><span>Desciption: </span>{{article.articleDesc}}</div>
+  <h2>{{article.articleTitle | uppercase}}</h2>
+  <small class="text-muted">{{article.articleDesc}}</small>
   <div>
-    <label>Text:
-      <input [(ngModel)]="article.articleText" placeholder="articleText"/>
-    </label>
+    <p>{{article.articleText}}</p>
   </div>
-
+  <button (click)="new()">new</button>
+  <button (click)="edit()">edit</button>
+  <button (click)="save()">save</button>
+  <button (click)="delete()">delete</button>
 </div>

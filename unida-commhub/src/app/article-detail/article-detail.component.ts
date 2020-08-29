@@ -29,5 +29,9 @@ export class ArticleDetailComponent implements OnInit {
       .subscribe(article => this.article = article);
   }
 
+  save(): void {
+    this.articlesService.updateArticle(this.article)
+      .subscribe(/*() => this.goBack()*/);
+  }
 
 }
