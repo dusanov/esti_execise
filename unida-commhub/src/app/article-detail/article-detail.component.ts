@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { State } from './State';
 import { FormBuilder, Validators, FormArray } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-article-detail',
@@ -31,7 +32,8 @@ export class ArticleDetailComponent implements OnInit {
     private route: ActivatedRoute,
     private articlesService: ArticlesService,
     private location: Location,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -45,7 +47,16 @@ export class ArticleDetailComponent implements OnInit {
   }
 
   new(): void{
-    this.article = <Article>{};
+    //this.article = <Article>{};
+    this.articleForm.patchValue({
+      id: null,
+      articleTitle: '',
+      articleDesc: '',
+      articleType: '',
+      articleText: '',
+      articleImage: ''
+    });
+
     this.mode = State.edit;
   }
 
@@ -66,11 +77,22 @@ export class ArticleDetailComponent implements OnInit {
 
   save(): void {
     Object.assign(this.article, this.articleForm.value);
-    this.articlesService.updateArticle(this.article)
-      .subscribe( article => {
-        this.mode = State.view;
-        //this.article = article;
-      });
+
+    if (this.article.id != null){
+      this.articlesService.updateArticle(this.article)
+        .subscribe( article => {
+          this.mode = State.view;
+       });
+    } else {
+      this.articlesService.saveNewArticle(this.article)
+        .subscribe( article => {
+          this.article = article;
+          //this.router.navigate(['/article',{id:article.id}]);
+          this.router.navigate([`/article/${article.id}`]);
+          this.mode = State.view;
+       });
+
+    }
   }
 
   cancel(): void{ if (this.mode === State.edit) this.mode = State.view; }

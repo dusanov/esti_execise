@@ -25,6 +25,14 @@ export class ArticlesService {
     );
   }
 
+  saveNewArticle(article: Article): Observable<any> {
+    return this.http.post(this.URL, article, this.httpOptions).pipe(
+      tap(_ => console.log(`saved new article`)),
+      catchError(this.handleError<any>('saveNewArticle'))
+    );
+  }
+
+
   getAllArticles(): Observable<Article[]> {
     return this.http.get<Article[]>(this.URL).pipe(
         tap(_ => console.log('Articles fetched !')),
