@@ -4,6 +4,7 @@ import { ArticlesService} from '../service/articles.service';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { State } from './State';
+import { FormBuilder, Validators, FormArray } from '@angular/forms';
 
 @Component({
   selector: 'app-article-detail',
@@ -14,13 +15,22 @@ export class ArticleDetailComponent implements OnInit {
 
   @Input() article: Article;
 
+  articleForm = this.fb.group({
+
+    articleTitle: ['', Validators.required],
+    articleDesc:[''],
+    articleText:['']
+
+  });
+
   public StateEnum = State;
   public mode = State.view;
 
   constructor(
     private route: ActivatedRoute,
     private articlesService: ArticlesService,
-    private location: Location
+    private location: Location,
+    private fb: FormBuilder
   ) {}
 
   ngOnInit(): void {
@@ -49,5 +59,7 @@ export class ArticleDetailComponent implements OnInit {
         //this.article = article;
       });
   }
+
+  cancel(): void{ if (this.mode === State.edit) this.mode = State.view; }
 
 }

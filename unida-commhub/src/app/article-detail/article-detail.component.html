@@ -6,30 +6,40 @@
     <div>
       <p>{{article.articleText}}</p>
     </div>
+    <div>
+      <button (click)="new()">new</button>
+      <button (click)="edit()">edit</button>
+      <button (click)="delete()">delete</button>
+    </div>
   </div>
 
   <div *ngIf="mode === StateEnum.edit">
-    <div>
-      <span>Article title: </span>
-      <br/>
-    <input type='text' value={{article.articleTitle}}>
-    </div>
-    <div>
-      <br/>
-      <span>Article description: </span>
-      <br/>
-      <textarea class="text-muted">{{article.articleDesc}}</textarea>
-    </div>
-    <div>
-      <br/>
-      <span>Article text: </span>
-      <br/>
-      <textarea>{{article.articleText}}</textarea>
-    </div>
+    <form [formGroup]="articleForm" (ngSubmit)="save()" >
+      <div>
+        <span>Article title: </span>
+        <br/>
+        <input type='text' value={{article.articleTitle}}>
+      </div>
+      <div>
+        <br/>
+        <span>Article description: </span>
+        <br/>
+        <textarea class="text-muted">{{article.articleDesc}}</textarea>
+      </div>
+      <div>
+        <br/>
+        <span>Article text: </span>
+        <br/>
+        <textarea>{{article.articleText}}</textarea>
+      </div>
+      <div>
+        <button (click)="save()">save</button>
+        <button (click)="cancel()">cancel</button>
+      </div>
+    </form>
   </div>
-
-  <button (click)="new()">new</button>
-  <button (click)="edit()">edit</button>
-  <button (click)="save()">save</button>
-  <button (click)="delete()">delete</button>
+  <hr>
+  <p>
+   Article : {{ article | json }}
+  </p>
 </div>

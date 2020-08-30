@@ -18,14 +18,14 @@ export class InMemoryDataService implements InMemoryDbService {
     return {articles};
   }
 
-  // Overrides the genId method to ensure that a article always has an id.
-  // If the articles array is empty,
-  // the method below returns the initial number (11).
-  // if the articles array is not empty, the method below returns the highest
-  // article id + 1.
   genId(articles: Article[]): number {
     return articles.length > 0 ? Math.max(...articles.map(article => article.id)) + 1 : 11;
   }
 
-  constructor() { }
+  getNewArticle(): Article {
+    //const newId = this.genId(this.createDb());
+    return <Article>{/*id:newId*/};
+  }
+
+  constructor() {}
 }

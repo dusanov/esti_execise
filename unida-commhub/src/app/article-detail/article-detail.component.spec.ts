@@ -1,5 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { FormBuilder, Validators, FormArray } from '@angular/forms';
 import { ArticleDetailComponent } from './article-detail.component';
 
 describe('ArticleDetailComponent', () => {
@@ -8,6 +9,10 @@ describe('ArticleDetailComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [
+          ReactiveFormsModule,
+          FormsModule,
+      ],
       declarations: [ ArticleDetailComponent ]
     })
     .compileComponents();
