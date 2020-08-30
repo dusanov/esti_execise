@@ -16,11 +16,12 @@ export class ArticleDetailComponent implements OnInit {
   @Input() article: Article;
 
   articleForm = this.fb.group({
-
+    id: [],
     articleTitle: ['', Validators.required],
     articleDesc:[''],
-    articleText:['']
-
+    articleType:[0],
+    articleText:[''],
+    articleImage:['']
   });
 
   public StateEnum = State;
@@ -49,10 +50,22 @@ export class ArticleDetailComponent implements OnInit {
   }
 
   edit(): void{
+
+    this.articleForm.patchValue({
+      id: this.article.id,
+      articleTitle: this.article.articleTitle,
+      articleDesc: this.article.articleDesc,
+      articleType: this.article.articleType,
+      articleText: this.article.articleText,
+      articleImage: this.article.articleImage
+    });
+
+    //Object.assign(this.articleForm.value, this.article);
     this.mode = State.edit;
   }
 
   save(): void {
+    Object.assign(this.article, this.articleForm.value);
     this.articlesService.updateArticle(this.article)
       .subscribe( article => {
         this.mode = State.view;

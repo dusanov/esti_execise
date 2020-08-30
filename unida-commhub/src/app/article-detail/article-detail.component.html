@@ -18,19 +18,19 @@
       <div>
         <span>Article title: </span>
         <br/>
-        <input type='text' value={{article.articleTitle}}>
+        <input type='text' formControlName="articleTitle" value={{article.articleTitle}} required>
       </div>
       <div>
         <br/>
         <span>Article description: </span>
         <br/>
-        <textarea class="text-muted">{{article.articleDesc}}</textarea>
+        <textarea class="text-muted" formControlName="articleDesc">{{article.articleDesc}}</textarea>
       </div>
       <div>
         <br/>
         <span>Article text: </span>
         <br/>
-        <textarea>{{article.articleText}}</textarea>
+        <textarea formControlName="articleText">{{article.articleText}}</textarea>
       </div>
       <div>
         <button (click)="save()">save</button>
