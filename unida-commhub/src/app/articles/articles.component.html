@@ -16,6 +16,12 @@
                 {{article.articleDesc}}
             </div>
             <!-- <p class="card-text"> {{article.articleText}}</p> -->
+            <button (click)="edit()">edit</button>
+            <button (click)="delete()">delete</button>
         </div>
     </div>
+</div>
+<button (click)="new()">new</button>
+<div>
+  <div *ngFor="let article of articles">{{article|json}}</div>
 </div>

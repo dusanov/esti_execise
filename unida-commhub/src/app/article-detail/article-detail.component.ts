@@ -77,7 +77,7 @@ export class ArticleDetailComponent implements OnInit {
 
   save(): void {
     Object.assign(this.article, this.articleForm.value);
-
+    console.log(`article id pre save: ${this.article.id}`);
     if (this.article.id != null){
       this.articlesService.updateArticle(this.article)
         .subscribe( article => {
