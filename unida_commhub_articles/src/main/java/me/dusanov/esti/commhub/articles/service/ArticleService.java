@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import me.dusanov.esti.commhub.articles.model.Article;
 import me.dusanov.esti.commhub.articles.repo.ArticleRepo;
 import reactor.core.publisher.Flux;
@@ -15,7 +14,7 @@ import reactor.core.scheduler.Schedulers;
 
 @Service
 @Transactional
-@Slf4j
+//@Slf4j
 @RequiredArgsConstructor
 public class ArticleService {
 
@@ -56,6 +55,6 @@ public class ArticleService {
 				.parallel()
 				.runOn(Schedulers.elastic())
 				.flatMap(articleId -> articleRepo.findById(articleId))
-				.ordered((article1, article2) -> article2.getArticleId() - article1.getArticleId());
+				.ordered((article1, article2) -> article2.getId() - article1.getId());
 	}
 }

@@ -4,7 +4,6 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
 
-import io.r2dbc.spi.Clob;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,8 +14,9 @@ import lombok.NoArgsConstructor;
 @Table("articles")
 public class Article {
 	
-	@Id	
-	private Integer articleId;
+	@Id
+	@Column("article_id")
+	private Integer id;
 	private String articleTitle;
 	@Column("article_short_desc")
 	private String articleDesc;

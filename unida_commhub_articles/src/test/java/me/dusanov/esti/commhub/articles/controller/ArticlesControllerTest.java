@@ -90,7 +90,7 @@ public class ArticlesControllerTest {
                 .consumeWith(article ->{
                     List<Article> articles = article.getResponseBody();
                     articles.forEach( a ->{
-                        assertTrue(a.getArticleId() != null);
+                        assertTrue(a.getId() != null);
                     });
                 });
     }

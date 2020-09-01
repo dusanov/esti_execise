@@ -23,4 +23,8 @@ export class ArticlesComponent implements OnInit {
     this.getArticles();
   }
 
+  new(): void{ console.log(" new !") }
+  edit(): void{ console.log(" edit !") }
+  delete(): void{ console.log(" delete !") }
+
 }

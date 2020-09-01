@@ -13,13 +13,14 @@ export class ArticlesService {
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
-  //private readonly URL = 'http://localhost:8080/articles';
-  private readonly URL = 'api/articles';
+  private readonly URL = 'http://localhost:8080/api/articles';
+  //private readonly URL = 'api/articles';
 
   constructor(private http: HttpClient) { }
   /** PUT: update the article on the server */
   updateArticle(article: Article): Observable<any> {
-    return this.http.put(this.URL, article, this.httpOptions).pipe(
+    const url = `${this.URL}/${article.id}`;
+    return this.http.put(url, article, this.httpOptions).pipe(
       tap(_ => console.log(`updated article id=${article.id}`)),
       catchError(this.handleError<any>('updateArticle'))
     );
