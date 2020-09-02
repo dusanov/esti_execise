@@ -1,3 +1,6 @@
+server:
+  port : 8080
+---
 spring:
   profiles:
     active: dev
@@ -10,7 +13,7 @@ spring:
     password: dusan
 logging:
   level:
-    org.springframework.data.r2dbc: Debug
+    org.springframework.data.r2dbc: Info
 ---
 spring:
   profiles: test
@@ -27,4 +30,4 @@ spring:
     password: postgres
   logging:
     level:
-      org.springframework.data.r2dbc: Debug
+      org.springframework.data.r2dbc: Error

@@ -119,4 +119,8 @@ Create database Products with packages / plans / product data structure
 	100%
 Create Spring Boot RESTFull endpoint for Products
 	10% - created initial app
+	15% - came up with model and repos
+		TODO: 	come up with test data - data.sql
+				implement services layer with all the mappings
+				update README.md
 Create Angular App to manage Products
