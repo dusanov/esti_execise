@@ -21,6 +21,11 @@
     <groupId>me.dusanov.unida.commhub</groupId>
     <artifactId>articles-service</artifactId>
     <version>0.1.0</version>
+    <description>Articles Restful endpoint for Commhub</description>
+
+    <properties>
+        <java.version>11</java.version>
+    </properties>
 
 	<dependencies>
 		<dependency>
@@ -93,10 +98,6 @@
         </dependency>
  
     </dependencies>
-
-    <properties>
-        <java.version>11</java.version>
-    </properties>
 
     <build>
         <plugins>

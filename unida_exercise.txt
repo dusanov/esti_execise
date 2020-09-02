@@ -116,5 +116,7 @@ Create Angular App to display Articles list and detail
 CBS3 Breakdown:
 ===============
 Create database Products with packages / plans / product data structure
+	100%
 Create Spring Boot RESTFull endpoint for Products
+	10% - created initial app
 Create Angular App to manage Products
