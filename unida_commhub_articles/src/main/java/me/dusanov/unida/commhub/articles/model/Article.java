@@ -1,4 +1,4 @@
-package me.dusanov.esti.commhub.articles.model;
+package me.dusanov.unida.commhub.articles.model;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Column;

@@ -1,11 +1,11 @@
-package me.dusanov.esti.commhub.articles.config;
+package me.dusanov.unida.commhub.articles.config;
 
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.data.convert.ReadingConverter;
 
 import io.r2dbc.spi.Row;
 import lombok.extern.slf4j.Slf4j;
-import me.dusanov.esti.commhub.articles.model.Article;
+import me.dusanov.unida.commhub.articles.model.Article;
 
 @Slf4j
 @ReadingConverter

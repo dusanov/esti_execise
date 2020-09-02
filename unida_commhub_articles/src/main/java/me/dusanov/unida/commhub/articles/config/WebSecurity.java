@@ -1,4 +1,4 @@
-package me.dusanov.esti.commhub.articles.config;
+package me.dusanov.unida.commhub.articles.config;
 
 import org.springframework.context.annotation.Configuration;
 

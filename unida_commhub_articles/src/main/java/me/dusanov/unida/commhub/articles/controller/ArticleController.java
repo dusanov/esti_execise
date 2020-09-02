@@ -1,4 +1,4 @@
-package me.dusanov.esti.commhub.articles.controller;
+package me.dusanov.unida.commhub.articles.controller;
 
 import java.util.List;
 
@@ -17,8 +17,8 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import me.dusanov.esti.commhub.articles.model.Article;
-import me.dusanov.esti.commhub.articles.service.ArticleService;
+import me.dusanov.unida.commhub.articles.model.Article;
+import me.dusanov.unida.commhub.articles.service.ArticleService;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 

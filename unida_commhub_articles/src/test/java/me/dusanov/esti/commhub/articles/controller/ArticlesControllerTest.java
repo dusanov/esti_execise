@@ -19,8 +19,8 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.reactive.server.WebTestClient;
 
 import lombok.extern.slf4j.Slf4j;
-import me.dusanov.esti.commhub.articles.model.Article;
-import me.dusanov.esti.commhub.articles.repo.ArticleRepo;
+import me.dusanov.unida.commhub.articles.model.Article;
+import me.dusanov.unida.commhub.articles.repo.ArticleRepo;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
