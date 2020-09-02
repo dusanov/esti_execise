@@ -73,3 +73,16 @@ Angular tutorial
 https://angular.io/tutorial/toh-pt6
 =======
 >>>>>>> 1335ee3f59cc94ddb0ae035eafaca2d6dfd52b0b
+
+
+09022020
+-=-==-=--=
+as postgres:
+sudo su - postgres
+ psql
+CREATE DATABASE unida_cbs_products;
+as dusan:
+psql -v ON_ERROR_STOP=1 -1 -h localhost -f 09_02_2020_1_create_product_category.sql unida_cbs_products
+psql -v ON_ERROR_STOP=1 -1 -h localhost -f 09_02_2020_2_create_product_item.sql unida_cbs_products
+psql -v ON_ERROR_STOP=1 -1 -h localhost -f 09_02_2020_3_create_product_package.sql unida_cbs_products
+psql -v ON_ERROR_STOP=1 -1 -h localhost -f 09_02_2020_4_create_product_package_items.sql unida_cbs_products

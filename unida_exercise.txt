@@ -26,21 +26,49 @@ Product
 		bandwith packages
 		routers
 	Land line telephony
+		device
 	TV
 		Netflix
 		packages
+			sport
+			movies
 	Mobile
 		smart phones
 		tablets
 		accessories
 		pre paid
 		post paid
-	Covid app
+	Apps
+		Covid app
+		some other app
+	Packages
+		Internet
+		Land line
+		Tv
+
+Product Tables/Entittes
+==============
+product_package
+	id
+	name
+	description
+	price
+	Fk N:N product_item.id
+product_category
+	id
+	name
+	description
+product_item
+	id
+	name
+	description
+	price
+	Fk 1:1 product_category.id
 
 
 Tech Stack
 ==========
-Scrum / TDD / Microservices
+Scrum / DDD/TDD / Microservices
 Angular JS, RXJS,
 Java, Spring Boot, RESTfull, Swagger
 Kafka ?
