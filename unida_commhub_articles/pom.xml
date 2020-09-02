@@ -18,7 +18,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
-    <groupId>me.dusanov.esti.commhub</groupId>
+    <groupId>me.dusanov.unida.commhub</groupId>
     <artifactId>articles-service</artifactId>
     <version>0.1.0</version>
 
