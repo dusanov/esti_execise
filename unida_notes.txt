@@ -32,6 +32,8 @@ https://www.youtube.com/watch?v=BT8XN9Mhrh8&list=RD5HogA9u4CYc&index=6
  
  CREATE DATABASE unida_commhub_articles
  \l -- list databases
+ \dt -- list tables
+ \d product_items -- describe product_items
  
 postgres@4umz0r20:~$ createuser --interactive --pwprompt
 Enter name of role to add: dusan
@@ -89,3 +91,5 @@ psql -v ON_ERROR_STOP=1 -1 -h localhost -f 09_02_2020_4_create_product_package_i
 
 RX Fluent Data Access API
 https://docs.spring.io/spring-data/r2dbc/docs/current-SNAPSHOT/reference/html/#r2dbc.datbaseclient.fluent-api
+
+psql -v ON_ERROR_STOP=1 -1 -h localhost -f data.sql unida_cbs_products

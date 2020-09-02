@@ -115,12 +115,15 @@ Create Angular App to display Articles list and detail
 
 CBS3 Breakdown:
 ===============
+
+https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.3.3.RELEASE&packaging=jar&jvmVersion=11&groupId=me.dusanov.unida.cbs.products&artifactId=products-service&name=products-service&description=Demo%20project%20for%20Spring%20Boot&packageName=me.dusanov.unida.cbs.products&dependencies=lombok,data-r2dbc,webflux,h2,postgresql
+
 Create database Products with packages / plans / product data structure
 	100%
 Create Spring Boot RESTFull endpoint for Products
 	10% - created initial app
 	15% - came up with model and repos
-		TODO: 	come up with test data - data.sql
-				implement services layer with all the mappings
-				update README.md
+	TODO: 	come up with test data - data.sql *done
+			implement services layer with all the mappings
+			update README.md
 Create Angular App to manage Products
