@@ -76,12 +76,12 @@ Create Spring Boot RESTFull endpoint Articles
 	* todo: H2 articleText to implement CLOB reactive converter
 	* 97% article controller test done, got one tech debt above
 Create Angular App to manage Articles
-	* 10% installed and created intial app
-	* 85% some funcinality works, lots of bugs
+	* 10% installed and created intial app *
+	* 95% some funcinality works, lots of bugs
 		* save new not working properly *fixed
 		* if there's 500 angular does not reflect model properly
-		* delete still missing
-		* new / delete from articles page missing
+		* delete still missing *done
+		* new / delete from articles page missing * done
 Create Angular App to display Articles list and detail
 	* 100% it's ugly but it works
 

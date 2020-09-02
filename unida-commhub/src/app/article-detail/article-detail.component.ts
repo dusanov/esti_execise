@@ -42,12 +42,17 @@ export class ArticleDetailComponent implements OnInit {
 
   getArticle(): void {
     const id = +this.route.snapshot.paramMap.get('id');
-    this.articlesService.getArticle(id)
-      .subscribe(article => this.article = article);
+    console.log(`id: ${id}`);
+    if (id) {
+      this.articlesService.getArticle(id)
+        .subscribe(article => this.article = article);
+    }else{ 
+      this.new();
+    }
   }
 
   new(): void{
-    //this.article = <Article>{};
+    this.article = <Article>{};
     this.articleForm.patchValue({
       id: null,
       articleTitle: '',
@@ -95,6 +100,11 @@ export class ArticleDetailComponent implements OnInit {
     }
   }
 
-  cancel(): void{ if (this.mode === State.edit) this.mode = State.view; }
+  cancel(): void{ 
+    if (this.article.id) 
+      this.mode = State.view;
+    else 
+      this.router.navigate(['/articles']); 
+  }
 
 }

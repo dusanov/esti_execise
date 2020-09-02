@@ -20,19 +20,29 @@ export class ArticlesService {
   /** PUT: update the article on the server */
   updateArticle(article: Article): Observable<any> {
     const url = `${this.URL}/${article.id}`;
-    return this.http.put(url, article, this.httpOptions).pipe(
-      tap(_ => console.log(`updated article id=${article.id}`)),
-      catchError(this.handleError<any>('updateArticle'))
-    );
+    return this.http.put(url, article, this.httpOptions)
+      .pipe(
+        tap(_ => console.log(`updated article id=${article.id}`)),
+        catchError(this.handleError<any>('updateArticle'))
+      );
   }
 
   saveNewArticle(article: Article): Observable<any> {
-    return this.http.post(this.URL, article, this.httpOptions).pipe(
-      tap(_ => console.log(`saved new article`)),
-      catchError(this.handleError<any>('saveNewArticle'))
-    );
+    return this.http.post(this.URL, article, this.httpOptions)
+      .pipe(
+        tap(_ => console.log(`saved new article`)),
+        catchError(this.handleError<any>('saveNewArticle'))
+      );
   }
 
+  deleteArticle(article: Article): Observable<any> {
+    const url = `${this.URL}/${article.id}`;
+    return this.http.delete(url, this.httpOptions)
+      .pipe(
+        tap(_ => console.log(`deleted article id=${article.id}`)),
+        catchError(this.handleError<any>('deleteArticle'))
+      );
+  }
 
   getAllArticles(): Observable<Article[]> {
     return this.http.get<Article[]>(this.URL).pipe(

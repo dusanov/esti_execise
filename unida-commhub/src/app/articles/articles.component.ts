@@ -1,7 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import { catchError, map, tap } from 'rxjs/operators';
 import { ArticlesService} from '../service/articles.service';
 import { Article } from '../Article';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-articles',
@@ -17,14 +19,40 @@ export class ArticlesComponent implements OnInit {
       .subscribe( articles => this.articles = articles);
   }
 
-  constructor(private articlesService: ArticlesService) {}
+  constructor(
+    private articlesService: ArticlesService,
+    private router: Router) {}
 
   ngOnInit(): void {
     this.getArticles();
   }
 
-  new(): void{ console.log(" new !") }
+  new(): void{ 
+    console.log(" new !");
+    this.router.navigate(["/article"]);
+  }
   edit(): void{ console.log(" edit !") }
-  delete(): void{ console.log(" delete !") }
+
+  delete( article: Article ): void{ 
+    console.log(" delete !") 
+    this.articlesService.deleteArticle(article)
+    .subscribe( _ => {
+        console.log('Article deleted !');
+        this.getArticles();
+      },
+      catchError(this.handleError<Article>('deleteArticles',article))
+    );
+  }
+
+  private handleError<T>(operation = 'operation', result?: T) {
+    return (error: any): Observable<T> => {
+
+      // TODO: send the error to remote logging infrastructure
+     console.error(error); // log to console instead
+
+      // Let the app keep running by returning an empty result.
+      return of(result as T);
+    };
+  }
 
 }
