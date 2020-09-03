@@ -21,7 +21,6 @@ public class ArticleService {
 	private final ArticleRepo articleRepo;
 	
 	public Mono<Article> createArticle(Article article){
-		//log.debug(" == service save hit === ");
 		return articleRepo.save(article);
 	}
 	

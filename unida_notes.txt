@@ -93,3 +93,37 @@ RX Fluent Data Access API
 https://docs.spring.io/spring-data/r2dbc/docs/current-SNAPSHOT/reference/html/#r2dbc.datbaseclient.fluent-api
 
 psql -v ON_ERROR_STOP=1 -1 -h localhost -f data.sql unida_cbs_products
+
+-=-==-=-=-
+DTO shananigans:
+
+	//TODO: return to this
+	public Mono<ProductItemDto> createItem(ProductItemDto itemDTO){
+		
+		ProductItem item = new ProductItem(
+								itemDTO.getId(),
+								itemDTO.getTitle(),
+								itemDTO.getDescription(),
+								itemDTO.getPrice(),
+								itemDTO.getCategory().getId());
+		
+		return itemRepo.save(item).flatMap(dbItem -> {
+			itemDTO.setId(dbItem.getId());
+			return Mono.just(itemDTO);
+		});
+		
+	}
+	
+	public Flux<ProductItemDto> getAllItems(){
+		return itemRepo.findAll()
+				.flatMap(item -> categoryRepo.findById(item.getId())
+						.map(category -> new ProductItemDto(item,category)));
+	}
+	
+	public Mono<ProductItemDto> findById(Integer itemId){
+		return itemRepo.findById(itemId)
+				.flatMap(item -> categoryRepo.findById(item.getId())
+						.map(category -> new ProductItemDto(item,category)));
+	}
+
+=-=-=-=-=-

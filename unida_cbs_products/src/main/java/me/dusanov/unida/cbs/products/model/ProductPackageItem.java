@@ -12,8 +12,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Table("product_package_items")
 //@IdClass(ProductPackageItemsId.class)
-public class ProductPackageItems {
+public class ProductPackageItem {
 	//@Id	private Integer packageId;
 	//@Id	private Integer itemId;
-	@Id private ProductPackageItemsId packageItemsId;
+	@Id private ProductPackageItemId packageItemId;
 }

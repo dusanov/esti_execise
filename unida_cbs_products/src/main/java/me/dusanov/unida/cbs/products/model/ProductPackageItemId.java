@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 //@Embeddable
-public class ProductPackageItemsId implements Serializable {
+public class ProductPackageItemId implements Serializable {
 
 	private static final long serialVersionUID = -2198471284740488808L;
 	
