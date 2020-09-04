@@ -9,19 +9,17 @@ import me.dusanov.unida.cbs.products.model.ProductItem;
 //@AllArgsConstructor
 @NoArgsConstructor
 public class ProductItemDto {
-//	private Integer id;
-//	private String title;
-//	private String description;
-//	private Double price;
-	private ProductItem item;
+	private Integer id;
+	private String title;
+	private String description;
+	private Double price;
 	private ProductCategory category;
 	
 	public ProductItemDto (ProductItem item, ProductCategory category) {
-//		this.id = item.getId();
-//		this.title = item.getTitle();
-//		this.description = item.getDescription();
-//		this.price = item.getPrice();
-		this.item = item;
+		this.id = item.getId();
+		this.title = item.getTitle();
+		this.description = item.getDescription();
+		this.price = item.getPrice();
 		this.category = category;
 	}
 }
