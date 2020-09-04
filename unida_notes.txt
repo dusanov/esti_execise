@@ -96,7 +96,7 @@ psql -v ON_ERROR_STOP=1 -1 -h localhost -f data.sql unida_cbs_products
 
 -=-==-=-=-
 DTO shananigans:
-
+https://stackoverflow.com/questions/58686680/reactor-how-to-convert-a-flux-of-entities-into-a-flux-of-dto-objects
 	//TODO: return to this
 	public Mono<ProductItemDto> createItem(ProductItemDto itemDTO){
 		

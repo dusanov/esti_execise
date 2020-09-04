@@ -124,8 +124,8 @@ Create Spring Boot RESTFull endpoint for Products
 	10% - created initial app
 	15% - came up with model and repos
 	TODO: 	come up with test data - data.sql *done
-			implement services layer with all the mappings - "We recommend rather a lookup of relations where it applies."
-			fix freaking junit
+			implement services layer with all the mappings - "We recommend rather a lookup of relations where it applies." *done
+			fix freaking junit * this one works, but the article test seems broken
 			https://github.com/spring-projects/spring-framework/issues/22286#issuecomment-473295172	https://github.com/eugenp/tutorials/blob/master/spring-5-reactive-2/src/test/java/com/baeldung/stepverifier/StepByStepUnitTest.java
 			https://www.baeldung.com/reactive-streams-step-verifier-test-publisher
 			dockerize
