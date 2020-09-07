@@ -102,7 +102,10 @@ Create Spring Boot RESTFull endpoint Articles
 	* 70% //missing swagger and test
 	* 80% added swagger
 	* todo: H2 articleText to implement CLOB reactive converter
-	* 97% article controller test done, got one tech debt above
+	* 97% article controller test done *test's not working !, got one tech debt above
+[ERROR] Failures:
+[ERROR]   ArticlesControllerTest.getAllArticlesValidateCount:89 Status expected:<200 OK> but was:<404 NOT_FOUND>
+	 *there's an issues with webtestclient
 Create Angular App to manage Articles
 	* 10% installed and created intial app *
 	* 95% some funcinality works, lots of bugs
@@ -128,6 +131,7 @@ Create Spring Boot RESTFull endpoint for Products
 			fix freaking junit * this one works, but the article test seems broken
 			https://github.com/spring-projects/spring-framework/issues/22286#issuecomment-473295172	https://github.com/eugenp/tutorials/blob/master/spring-5-reactive-2/src/test/java/com/baeldung/stepverifier/StepByStepUnitTest.java
 			https://www.baeldung.com/reactive-streams-step-verifier-test-publisher
+			tests still suck. article ctrlr test is failing on webTestClient, PrdctCat service test works but schema and data are loaded from the code, there's no single point of truth yet
 			dockerize
 			update README.md
 Create Angular App to manage Products

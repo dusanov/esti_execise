@@ -127,3 +127,5 @@ https://stackoverflow.com/questions/58686680/reactor-how-to-convert-a-flux-of-en
 	}
 
 =-=-=-=-=-
+
+r2dbc:///test;INIT=RUNSCRIPT FROM '/c/development/unida_exercise/unida_dbs/unida_cbs_products/create.sql'\;runscript from '/c/development/unida_exercise/unida_dbs/unida_cbs_products/data.sql'
