@@ -13,8 +13,8 @@ export class ArticlesService {
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
-  private readonly URL = 'http://localhost:8080/api/articles';
-  //private readonly URL = 'api/articles';
+  //private readonly URL = 'http://localhost:8080/api/articles';
+  private readonly URL = 'api/articles';
 
   constructor(private http: HttpClient) { }
   /** PUT: update the article on the server */
