@@ -70,11 +70,12 @@ Tech Stack
 ==========
 Scrum / DDD/TDD / Microservices
 Angular JS, RXJS,
-Java, Spring Boot, RESTfull, Swagger
+Java, Spring Boot, RESTful, Swagger
 Kafka ?
 Git
 Maven (CloudFoundry, Splunk or Jenkins are a plus)
 Databases
+Gateway ?
 
 User Stories Backlog:
 =====================
@@ -83,9 +84,14 @@ CH5 As a customer/visitor I want to be able to register
 CH4 As an agent I want to be able to create new Newsletters, SSP and SSSP emails and schedule them to be sent at particular time
 CH1 As a customer/visitor I want to be able to subscribe to newsletters and SSPs
 CH2 As a customer/visitor I want to be able to use Customer support
+CH6 implement new type of article, promo. bind it to a product *https://medium.com/showpad-engineering/why-you-should-never-use-function-calls-in-angular-template-expressions-e1a50f9c0496
 
 CBS3 As a sysadmin I want to be able to administer company products
 CBS1 As a desk clerk I want to be able to enter new customer and to administer customer products
+
+INFRA1 introduce user auth as separate service but in
+      such way that the content authors are event sourced to articles DB
+      and the product admins are event sourced to products db
 
 EoW: 0, 0.5, 1, 2, 3, 5, 8, 13, 20, 40, 100
 
