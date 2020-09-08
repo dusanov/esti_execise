@@ -10,11 +10,11 @@ Website
 	Email Subscription management
 	Customer Help and Support
 Emails
-	Newsletter Emails, 
-	Single-Purpose Emails, 
+	Newsletter Emails,
+	Single-Purpose Emails,
 	Segmented Single-Purpose Emails
 
-	
+
 Central Backend Systems
 =======================
 Various products in the internet access and device management
@@ -80,8 +80,8 @@ User Stories Backlog:
 =====================
 CH3 As an agent I want to be able to enter new Article so that it appears on CommHub website
 CH5 As a customer/visitor I want to be able to register
-CH4 As an agent I want to be able to create new Newsletters, SSP and SSSP emails and schedule them to be sent at particular time 	
-CH1 As a customer/visitor I want to be able to subscribe to newsletters and SSPs 
+CH4 As an agent I want to be able to create new Newsletters, SSP and SSSP emails and schedule them to be sent at particular time
+CH1 As a customer/visitor I want to be able to subscribe to newsletters and SSPs
 CH2 As a customer/visitor I want to be able to use Customer support
 
 CBS3 As a sysadmin I want to be able to administer company products
@@ -96,7 +96,7 @@ CBS3	EoW= 40
 
 CH3 Breakdown:
 ==============
-Create database Articles 
+Create database Articles
 	* 100%  // observed was a need for additioinal tables like article type and user
 Create Spring Boot RESTFull endpoint Articles
 	* 70% //missing swagger and test
@@ -132,6 +132,13 @@ Create Spring Boot RESTFull endpoint for Products
 			https://github.com/spring-projects/spring-framework/issues/22286#issuecomment-473295172	https://github.com/eugenp/tutorials/blob/master/spring-5-reactive-2/src/test/java/com/baeldung/stepverifier/StepByStepUnitTest.java
 			https://www.baeldung.com/reactive-streams-step-verifier-test-publisher
 			tests still suck. article ctrlr test is failing on webTestClient, PrdctCat service test works but schema and data are loaded from the code, there's no single point of truth yet
-			dockerize
+			dockerize * see below 08092020
 			update README.md
 Create Angular App to manage Products
+  - 08092020 java box is dead, moving on to angular
+  breakdown:
+    come up with the models
+    create in memory web store
+    create product items per category page with crud funcinality
+    create packages page with crud functionality
+
