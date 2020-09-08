@@ -137,8 +137,8 @@ Create Spring Boot RESTFull endpoint for Products
 Create Angular App to manage Products
   - 08092020 java box is dead, moving on to angular
   breakdown:
-    come up with the models
-    create in memory web store
-    create product items per category page with crud funcinality
-    create packages page with crud functionality
+    come up with the models *
+    create in memory web store *
+    create product items per category page with the crud funcinality
+    create packages page with the crud functionality
 
