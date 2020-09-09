@@ -9,8 +9,8 @@ spring:
   profiles: dev
   r2dbc:
     url: r2dbc:postgresql://localhost:5432/unida_commhub_articles
-    username: dusan
-    password: dusan
+    username: chronos # dusan
+    password: chronos # dusan
 logging:
   level:
     org.springframework.data.r2dbc: Info
