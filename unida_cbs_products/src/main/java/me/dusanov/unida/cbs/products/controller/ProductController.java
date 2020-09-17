@@ -18,10 +18,18 @@ import org.springframework.web.bind.annotation.RestController;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import me.dusanov.unida.cbs.products.model.ProductItem;
+import me.dusanov.unida.cbs.products.dto.ProductItemDto;
 import me.dusanov.unida.cbs.products.service.ProductItemService;
+import me.dusanov.unida.cbs.products.service.ProductCategoryService;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+/*
+ *
+ * Testing if stupid SpaceVim works properly with Java
+ *
+ *
+ * */
 @RestController
 @RequestMapping("/api/products")
 @RequiredArgsConstructor
@@ -30,6 +38,7 @@ import reactor.core.publisher.Mono;
 public class ProductController {
 
 	private final ProductItemService productService;
+	private final ProductCategoryService categoryService;
 
   	@PostMapping
     @ResponseStatus(HttpStatus.CREATED)
@@ -43,10 +52,18 @@ public class ProductController {
     }
 
     @GetMapping("/{productId}")
-    public Mono<ResponseEntity<ProductItem>> getProductById(@PathVariable Integer productId){
-        Mono<ProductItem> Product = productService.findById(productId);
-        return Product.map( product -> ResponseEntity.ok(product))
-                .defaultIfEmpty(ResponseEntity.notFound().build());
+    public Mono</*ResponseEntity<*/ProductItemDto/*>*/> getProductById(@PathVariable Integer productId){
+        Mono<ProductItem> db_product = productService.findById(productId);
+        return productService.findById(productId)
+          .flatMap(dbprod -> categoryService.findById(dbprod.getCategoryId())
+              .map(cat -> new ProductItemDto(dbprod, cat)));
+      //    .defaultIfEmpty(ResponseEntity.notFound().build());
+      /*  return db_product.map( product -> {
+                    ProductItemDto pdto = new ProductItemDto(product, categoryService.findById(product.getCategoryId()));
+                    ResponseEntity.ok(pdto);
+                })
+               .defaultIfEmpty(ResponseEntity.notFound().build());
+    */
     }
 
     @PutMapping("/{productId}")

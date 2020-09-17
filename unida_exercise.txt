@@ -129,7 +129,7 @@ https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.3.3
 
 Create database Products with packages / plans / product data structure
 	100%
-Create Spring Boot RESTFull endpoint for Products
+Create Spring Boot RESTFul endpoint for Products
 	10% - created initial app
 	15% - came up with model and repos
 	TODO: 	come up with test data - data.sql *done
@@ -138,6 +138,8 @@ Create Spring Boot RESTFull endpoint for Products
 			https://github.com/spring-projects/spring-framework/issues/22286#issuecomment-473295172	https://github.com/eugenp/tutorials/blob/master/spring-5-reactive-2/src/test/java/com/baeldung/stepverifier/StepByStepUnitTest.java
 			https://www.baeldung.com/reactive-streams-step-verifier-test-publisher
 			tests still suck. article ctrlr test is failing on webTestClient, PrdctCat service test works but schema and data are loaded from the code, there's no single point of truth yet
+      update product controllers to use DTOs where aplicable
+      implement package controller
 			dockerize * see below 08092020
 			update README.md
 Create Angular App to manage Products
@@ -148,3 +150,10 @@ Create Angular App to manage Products
     create product items per category page with the crud funcinality
     create packages page with the crud functionality
 
+INFRA1 Breakdown:
+===================
+investigate json tokens for authentication/authorization
+come up with the DB - H2?
+use vertx
+update articles and product DBs with the basic user info
+come up with the kafka streams to event source changes from UserDB to ProductDB and ArticleDB

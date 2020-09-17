@@ -1,7 +1,7 @@
  update-alternatives --list java
  sudo update-alternatives --set java /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java
  sudo update-alternatives --set java /usr/lib/jvm/java-11-openjdk-amd64/bin/java
- 
+
  ~~~~~~~~~~~~~~~~~~~~~~~
  microservices vs java modules* not !
  https://dzone.com/articles/multi-module-monolithic-as-microservice
@@ -23,18 +23,18 @@ https://www.youtube.com/watch?v=BT8XN9Mhrh8&list=RD5HogA9u4CYc&index=6
  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  http://reactivex.io/rxjs/manual/overview.html
  https://rxjs-dev.firebaseapp.com/
- 
+
  postgres:
  =========
  sudo service postgresql start
  sudo su - postgres
  psql
- 
+
  CREATE DATABASE unida_commhub_articles
  \l -- list databases
  \dt -- list tables
  \d product_items -- describe product_items
- 
+
 postgres@4umz0r20:~$ createuser --interactive --pwprompt
 Enter name of role to add: dusan
 Enter password for new role:
@@ -42,8 +42,8 @@ Enter it again:
 Shall the new role be a superuser? (y/n) n
 Shall the new role be allowed to create databases? (y/n) n
 Shall the new role be allowed to create more new roles? (y/n) n
- 
- 
+
+
 execute ddl:
 ============
 psql -v ON_ERROR_STOP=1 -1 -h the.server.hostname -f my_script.sql the_database
@@ -99,33 +99,67 @@ DTO shananigans:
 https://stackoverflow.com/questions/58686680/reactor-how-to-convert-a-flux-of-entities-into-a-flux-of-dto-objects
 	//TODO: return to this
 	public Mono<ProductItemDto> createItem(ProductItemDto itemDTO){
-		
+
 		ProductItem item = new ProductItem(
 								itemDTO.getId(),
 								itemDTO.getTitle(),
 								itemDTO.getDescription(),
 								itemDTO.getPrice(),
 								itemDTO.getCategory().getId());
-		
+
 		return itemRepo.save(item).flatMap(dbItem -> {
 			itemDTO.setId(dbItem.getId());
 			return Mono.just(itemDTO);
 		});
-		
+
 	}
-	
+
 	public Flux<ProductItemDto> getAllItems(){
 		return itemRepo.findAll()
 				.flatMap(item -> categoryRepo.findById(item.getId())
 						.map(category -> new ProductItemDto(item,category)));
 	}
-	
+
 	public Mono<ProductItemDto> findById(Integer itemId){
 		return itemRepo.findById(itemId)
 				.flatMap(item -> categoryRepo.findById(item.getId())
 						.map(category -> new ProductItemDto(item,category)));
 	}
 
+    5   ┊ @GetMapping("/{productId}")
+    4   ┊ public Mono<ResponseEntity<ProductItemDto>> getProductById(@PathVariable Integer productId){
+    3   ┊ ┊ ┊ Mono<ProductItem> db_product = productService.findById(productId);
+    2
+    1   ┊ ┊ ┊ return db_product.map( product -> {
+        ┊ ┊ ┊ ┊ ┊ ┊ ┊ ┊ ┊ ProductItemDto pdto = new ProductItemDto(product, categoryService.findById(product.getCategoryId()));
+    1   ┊ ┊ ┊ ┊ ┊ ┊ ┊ ┊ ┊ ResponseEntity.ok(pdto);
+    2   ┊ ┊ ┊ ┊ ┊ ┊ ┊ })
+    3   ┊ ┊ ┊ ┊ ┊ ┊ ┊ .defaultIfEmpty(ResponseEntity.notFound().build());
+    4   ┊ }
+
+    Mono<ProductItemDto> pdto = Mono.just( new ProductItemDto(product, categoryService.findById(product.getCategoryId())));
 =-=-=-=-=-
 
 r2dbc:///test;INIT=RUNSCRIPT FROM '/c/development/unida_exercise/unida_dbs/unida_cbs_products/create.sql'\;runscript from '/c/development/unida_exercise/unida_dbs/unida_cbs_products/data.sql'
+
+=-=-17092020 =-=-=-
+installing kafka on chromebook
+https://kafka.apache.org/quickstart
+
+Start zookeeper:
+~/kafka_2.13-2.6.0 $ bin/zookeeper-server-start.sh  config/zookeeper.properties
+
+Start broker server
+~/kafka_2.13-2.6.0 $ bin/kafka-server-start.sh config/server.properties
+
+Create topic:
+~/kafka_2.13-2.6.0 $ bin/kafka-topics.sh --create --topic quickstart-events --bootstrap-server localhost:9092
+
+Describe topic:
+bin/kafka-topics.sh --describe --topic quickstart-events --bootstrap-server localhost:9092
+
+Start producer:
+bin/kafka-console-producer.sh --topic quickstart-events --bootstrap-server localhost:9092
+
+Start consumer:
+bin/kafka-console-consumer.sh --topic quickstart-events --from-beginning --bootstrap-server localhost:9092
