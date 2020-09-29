@@ -10,11 +10,11 @@ Website
 	Email Subscription management
 	Customer Help and Support
 Emails
-	Newsletter Emails, 
-	Single-Purpose Emails, 
+	Newsletter Emails,
+	Single-Purpose Emails,
 	Segmented Single-Purpose Emails
 
-	
+
 Central Backend Systems
 =======================
 Various products in the internet access and device management
@@ -70,22 +70,28 @@ Tech Stack
 ==========
 Scrum / DDD/TDD / Microservices
 Angular JS, RXJS,
-Java, Spring Boot, RESTfull, Swagger
+Java, Spring Boot, RESTful, Swagger
 Kafka ?
 Git
 Maven (CloudFoundry, Splunk or Jenkins are a plus)
 Databases
+Gateway ?
 
 User Stories Backlog:
 =====================
 CH3 As an agent I want to be able to enter new Article so that it appears on CommHub website
 CH5 As a customer/visitor I want to be able to register
-CH4 As an agent I want to be able to create new Newsletters, SSP and SSSP emails and schedule them to be sent at particular time 	
-CH1 As a customer/visitor I want to be able to subscribe to newsletters and SSPs 
+CH4 As an agent I want to be able to create new Newsletters, SSP and SSSP emails and schedule them to be sent at particular time
+CH1 As a customer/visitor I want to be able to subscribe to newsletters and SSPs
 CH2 As a customer/visitor I want to be able to use Customer support
+CH6 implement new type of article, promo. bind it to a product *https://medium.com/showpad-engineering/why-you-should-never-use-function-calls-in-angular-template-expressions-e1a50f9c0496
 
 CBS3 As a sysadmin I want to be able to administer company products
 CBS1 As a desk clerk I want to be able to enter new customer and to administer customer products
+
+INFRA1 introduce user auth as separate service but in
+      such way that the content authors are event sourced to articles DB
+      and the product admins are event sourced to products db
 
 EoW: 0, 0.5, 1, 2, 3, 5, 8, 13, 20, 40, 100
 
@@ -96,7 +102,7 @@ CBS3	EoW= 40
 
 CH3 Breakdown:
 ==============
-Create database Articles 
+Create database Articles
 	* 100%  // observed was a need for additioinal tables like article type and user
 Create Spring Boot RESTFull endpoint Articles
 	* 70% //missing swagger and test
@@ -123,7 +129,7 @@ https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.3.3
 
 Create database Products with packages / plans / product data structure
 	100%
-Create Spring Boot RESTFull endpoint for Products
+Create Spring Boot RESTFul endpoint for Products
 	10% - created initial app
 	15% - came up with model and repos
 	TODO: 	come up with test data - data.sql *done
@@ -138,5 +144,23 @@ Create Spring Boot RESTFull endpoint for Products
 				kafka ?
 				articles service
 				products service
+      update product controllers to use DTOs where aplicable
+      implement package controller
+			dockerize * see below 08092020
+        * maybe use semaphore to dockerize and do test
 			update README.md
 Create Angular App to manage Products
+  - 08092020 java box is dead, moving on to angular
+  breakdown:
+    come up with the models *
+    create in memory web store *
+    create product items per category page with the crud funcinality
+    create packages page with the crud functionality
+
+INFRA1 Breakdown:
+===================
+investigate json tokens for authentication/authorization
+come up with the DB - H2?
+use vertx
+update articles and product DBs with the basic user info
+come up with the kafka streams to event source changes from UserDB to ProductDB and ArticleDB
