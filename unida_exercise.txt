@@ -141,6 +141,7 @@ Create Spring Boot RESTFul endpoint for Products
       update product controllers to use DTOs where aplicable
       implement package controller
 			dockerize * see below 08092020
+        * maybe use semaphore to dockerize and do test
 			update README.md
 Create Angular App to manage Products
   - 08092020 java box is dead, moving on to angular
