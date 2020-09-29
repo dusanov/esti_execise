@@ -133,5 +133,10 @@ Create Spring Boot RESTFull endpoint for Products
 			https://www.baeldung.com/reactive-streams-step-verifier-test-publisher
 			tests still suck. article ctrlr test is failing on webTestClient, PrdctCat service test works but schema and data are loaded from the code, there's no single point of truth yet
 			dockerize
+				webapp
+				postgress
+				kafka ?
+				articles service
+				products service
 			update README.md
 Create Angular App to manage Products
