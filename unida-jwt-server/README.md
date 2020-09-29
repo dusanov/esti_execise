@@ -15,3 +15,7 @@ or
 ```bash
 vertx run me.dusanov.unida.jwt.SimpleFormServer -cp target/[packaged-jar-name.jar]
 ```
+or
+```bash
+ mvn exec:java -Dexec.mainClass="me.dusanov.unida.jwt.SimpleFormServer"
+```
