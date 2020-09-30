@@ -1,39 +1,43 @@
 package me.dusanov.unida.jwt;
 
-import me.dusanov.unida.util.Runner;
-//import io.vertx.ext.auth.authentication.UsernamePasswordCredentials;
-import io.vertx.ext.auth.jdbc.JDBCAuth;
-//import io.vertx.ext.auth.JWTOptions;
-import io.vertx.ext.jwt.JWTOptions;
-import io.vertx.ext.jdbc.JDBCClient;
-import io.vertx.ext.web.Router;
-import io.vertx.ext.web.handler.BodyHandler;
-import io.vertx.ext.web.handler.StaticHandler;
+import java.sql.Connection;
+import java.sql.DriverManager;
+
 import io.vertx.core.AbstractVerticle;
+import io.vertx.core.http.HttpHeaders;
 import io.vertx.core.json.JsonArray;
 import io.vertx.core.json.JsonObject;
 import io.vertx.core.logging.Logger;
 import io.vertx.core.logging.LoggerFactory;
-import io.vertx.core.http.HttpHeaders;
-import me.dusanov.unida.jwt.CREATE_DB_SQL;
-import java.sql.Connection;
-import java.sql.DriverManager;
+import io.vertx.ext.auth.JWTOptions;
+import io.vertx.ext.auth.PubSecKeyOptions;
+//import io.vertx.ext.auth.authentication.UsernamePasswordCredentials;
+import io.vertx.ext.auth.jdbc.JDBCAuth;
+import io.vertx.ext.auth.jwt.JWTAuth;
+import io.vertx.ext.auth.jwt.JWTAuthOptions;
+//import io.vertx.ext.jwt.JWTOptions;
+import io.vertx.ext.jdbc.JDBCClient;
+import io.vertx.ext.web.Router;
+import io.vertx.ext.web.handler.BodyHandler;
+import io.vertx.ext.web.handler.StaticHandler;
+import me.dusanov.unida.util.CREATE_DB_SQL;
+import me.dusanov.unida.util.Runner;
 
 /*
- * NOTE! It's recommended to use Vert.x-Web for examples like this
- *
- * @author <a href="http://tfox.org">Tim Fox</a>
+ * 
  */
-public class SimpleFormServer extends AbstractVerticle {
+public class JwtTokenProvider extends AbstractVerticle {
 
-  private final Logger LOGGER = LoggerFactory.getLogger( SimpleFormServer.class );
-  protected JDBCAuth jdbcAuthProvider;
+  private final Logger LOGGER = LoggerFactory.getLogger( JwtTokenProvider.class );
+  private static final String BEARER = "Bearer ";
+  
+  protected JDBCAuth jdbcAuth;
   protected JDBCClient client;
-  protected io.vertx.ext.auth.jwt.JWTAuth jwtProvider;
+  protected JWTAuth jwtAuth;
 
   // Convenience method so you can run it in your IDE
   public static void main(String[] args) {
-    Runner.runExample(SimpleFormServer.class);
+    Runner.runExample(JwtTokenProvider.class);
   }
 
   public void createDb() throws Exception {
@@ -45,6 +49,7 @@ public class SimpleFormServer extends AbstractVerticle {
     }
   }
 
+  //TODO
   public void configz() {
 
     this.client = JDBCClient.create(vertx, new JsonObject()
@@ -52,13 +57,13 @@ public class SimpleFormServer extends AbstractVerticle {
                   .put("url", "jdbc:hsqldb:mem:test?shutdown=true")
                   .put("driver_class", "org.hsqldb.jdbcDriver"));
 
-    this.jdbcAuthProvider = JDBCAuth.create(vertx, client).setNonces(new JsonArray().add("queiM3ayei1ahCheicupohphioveer0O"));
+    this.jdbcAuth = JDBCAuth.create(vertx, client).setNonces(new JsonArray().add("queiM3ayei1ahCheicupohphioveer0O"));
 
     //init auth  // - commented out cus' no wrki
     // jwt jwtProvider
     // https://vertx.io/docs/vertx-auth-jwt/java/#_validating_tokens
-    this.jwtProvider = io.vertx.ext.auth.jwt.JWTAuth.create(vertx, new io.vertx.ext.auth.jwt.JWTAuthOptions()
-               .addPubSecKey(new io.vertx.ext.auth.PubSecKeyOptions()
+    this.jwtAuth = JWTAuth.create(vertx, new JWTAuthOptions()
+               .addPubSecKey(new PubSecKeyOptions()
                  .setAlgorithm("HS256")
                  .setPublicKey("keyboard cat")
                  .setSymmetric(true)));
@@ -77,28 +82,26 @@ public class SimpleFormServer extends AbstractVerticle {
       ctx.response().sendFile("index.html");
     });
 
-    router.post("/form").handler(ctx -> {
+    router.post("/authenticate").handler(ctx -> {
 
       try {
-
-        //ctx.response().setChunked(true);
-        //ctx.request().setExpectMultipart(true);
-        //ctx.response().write("This is a test =====\n");
-
-        JsonObject credentials =
+    	  
+    	JsonObject credentials =
           new JsonObject().put("username",ctx.request().formAttributes().get("username")).put("password", ctx.request().formAttributes().get("password"));
 
-        jdbcAuthProvider.authenticate(credentials,user -> {
+        jdbcAuth.authenticate(credentials,user -> {
 
           if (user.succeeded()){
-            String token = jwtProvider.generateToken(
-                        new JsonObject().put("wtf_is_sub",ctx.request().formAttributes().get("username")/*"senor_paolo"*/),
+            String token = jwtAuth.generateToken(
+                        new JsonObject().put("username",ctx.request().formAttributes().get("username")/*"senor_paolo"*/),
                         new JWTOptions());
 
             LOGGER.info("=== got this user: " + user.result().principal().getString("username")
                     + "\n=== got this token:\n" + token);
 
-            ctx.response().end("Hello " + user.result().principal().getString("username") + ", your token is:\n" + token);
+            ctx.response().headers().add(HttpHeaders.AUTHORIZATION, JwtTokenProvider.BEARER + token);
+            ctx.response().end("Hello " + user.result().principal().getString("username"));
+            //ctx.reroute("/protected/sshh");
 
           } else{
             ctx.response().setStatusCode(403).end("loggin failed :(");
@@ -111,11 +114,22 @@ public class SimpleFormServer extends AbstractVerticle {
     });
 
     router.get("/protected/*").handler(ctx -> {
-      //read jwt token from auth header
-      String authHeader = ctx.request().headers().get(HttpHeaders.AUTHORIZATION);
+
+      String authHeader = ctx.request().headers().get(HttpHeaders.AUTHORIZATION) + "";
       LOGGER.info("=== auth header for:" + ctx.request().uri() + " is: " + authHeader);
-      ctx.response().end("=== holas amigxs ===");
+      
+      jwtAuth.authenticate(new JsonObject().put("jwt", authHeader.replace(JwtTokenProvider.BEARER, "")),result -> {
+    	  
+    	  if (result.succeeded()) {
+    		  LOGGER.info("=== jwt auth passed for:"  + result.result().principal().getString("username"));
+    	      ctx.response().end(" holas amigx, " + result.result().principal().getString("username"));
+    	  }else /* if (result.failed()) */ {
+    		  LOGGER.info("### auth failed for:" + ctx.request().uri() + " is: " + authHeader);
+    		  ctx.response().setStatusCode(401).end("=== auth failed");
+    	  }
+      });
     });
+    
     // Create a router endpoint for the static content.
     router.route().handler(StaticHandler.create());
     vertx.createHttpServer().requestHandler(router).listen(9090);

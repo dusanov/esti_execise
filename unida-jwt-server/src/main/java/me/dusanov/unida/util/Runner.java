@@ -20,30 +20,41 @@ public class Runner {
   private static final String CORE_EXAMPLES_RUBY_DIR = CORE_EXAMPLES_DIR + "/src/main/ruby/";
   private static final String CORE_EXAMPLES_KOTLIN_DIR = CORE_EXAMPLES_DIR + "/src/main/kotlin/";
 
-  public static void runClusteredExample(Class clazz) {
-    runExample(CORE_EXAMPLES_JAVA_DIR, clazz, new VertxOptions().setClustered(true), null);
+  public static void runClusteredExample(Class<?> clazz) {
+	  VertxOptions options = new VertxOptions();//   
+	  options.getEventBusOptions().setClustered(true);
+    runExample(CORE_EXAMPLES_JAVA_DIR, clazz, options, null);
   }
 
-  public static void runClusteredExample(Class clazz, VertxOptions options) {
-    runExample(CORE_EXAMPLES_JAVA_DIR, clazz, options.setClustered(true), null);
+  public static void runClusteredExample(Class<?> clazz, VertxOptions options) {
+	options.getEventBusOptions().setClustered(true);
+    runExample(CORE_EXAMPLES_JAVA_DIR, clazz, options, null);
   }
 
-  public static void runExample(Class clazz) {
-    runExample(CORE_EXAMPLES_JAVA_DIR, clazz, new VertxOptions().setClustered(false), null);
+  public static void runExample(Class<?> clazz) {
+	VertxOptions options = new VertxOptions();//   
+	options.getEventBusOptions().setClustered(false);
+    runExample(CORE_EXAMPLES_JAVA_DIR, clazz, options, null);
   }
 
-  public static void runExample(Class clazz, DeploymentOptions options) {
-    runExample(CORE_EXAMPLES_JAVA_DIR, clazz, new VertxOptions().setClustered(false), options);
+  public static void runExample(Class<?> clazz, DeploymentOptions options) {
+	VertxOptions v_options = new VertxOptions();//   
+	v_options.getEventBusOptions().setClustered(false);
+    runExample(CORE_EXAMPLES_JAVA_DIR, clazz, v_options, options);
   }
 
   // JavaScript examples
 
   public static void runJSExample(String scriptName) {
-    runScriptExample(CORE_EXAMPLES_JS_DIR, scriptName, new VertxOptions().setClustered(false));
+	VertxOptions options = new VertxOptions();//   
+	options.getEventBusOptions().setClustered(false);
+    runScriptExample(CORE_EXAMPLES_JS_DIR, scriptName, options);
   }
 
   public static void runJSExampleClustered(String scriptName) {
-    runScriptExample(CORE_EXAMPLES_JS_DIR, scriptName, new VertxOptions().setClustered(true));
+	VertxOptions options = new VertxOptions();//   
+	options.getEventBusOptions().setClustered(true);
+    runScriptExample(CORE_EXAMPLES_JS_DIR, scriptName, options);
   }
 
   static class JSEchoServerRunner {
@@ -193,11 +204,15 @@ public class Runner {
   // Groovy examples
 
   public static void runGroovyExample(String scriptName) {
-    runScriptExample(CORE_EXAMPLES_GROOVY_DIR, scriptName, new VertxOptions().setClustered(false));
+	  VertxOptions options = new VertxOptions();//   
+	  options.getEventBusOptions().setClustered(false);
+    runScriptExample(CORE_EXAMPLES_GROOVY_DIR, scriptName, options);
   }
 
   public static void runGroovyExampleClustered(String scriptName) {
-    runScriptExample(CORE_EXAMPLES_GROOVY_DIR, scriptName, new VertxOptions().setClustered(true));
+	  VertxOptions options = new VertxOptions();//   
+	  options.getEventBusOptions().setClustered(true);
+    runScriptExample(CORE_EXAMPLES_GROOVY_DIR, scriptName, options);
   }
 
   static class GroovyEchoServerRunner {
@@ -347,11 +362,15 @@ public class Runner {
   // Ruby examples
 
   public static void runRubyExample(String scriptName) {
-    runScriptExample(CORE_EXAMPLES_RUBY_DIR, scriptName, new VertxOptions().setClustered(false));
+	  VertxOptions options = new VertxOptions();//   
+	  options.getEventBusOptions().setClustered(false);
+    runScriptExample(CORE_EXAMPLES_RUBY_DIR, scriptName, options);
   }
 
   public static void runRubyExampleClustered(String scriptName) {
-    runScriptExample(CORE_EXAMPLES_GROOVY_DIR, scriptName, new VertxOptions().setClustered(true));
+	  VertxOptions options = new VertxOptions();//   
+	  options.getEventBusOptions().setClustered(true);
+    runScriptExample(CORE_EXAMPLES_GROOVY_DIR, scriptName, options);
   }
 
   static class RubyEchoServerRunner {
@@ -501,11 +520,15 @@ public class Runner {
   // Kotlin
 
   public static void runKotlinExample(String scriptName) {
-    runScriptExample(CORE_EXAMPLES_KOTLIN_DIR, scriptName, new VertxOptions().setClustered(false));
+	VertxOptions options = new VertxOptions();//   
+	options.getEventBusOptions().setClustered(false);
+    runScriptExample(CORE_EXAMPLES_KOTLIN_DIR, scriptName, options);
   }
 
   public static void runKotlinExampleClustered(String scriptName) {
-    runScriptExample(CORE_EXAMPLES_JS_DIR, scriptName, new VertxOptions().setClustered(true));
+	VertxOptions options = new VertxOptions();//   
+	options.getEventBusOptions().setClustered(true);
+    runScriptExample(CORE_EXAMPLES_JS_DIR, scriptName, options);
   }
 
   static class KotlinHttpSimpleServerRunner {
@@ -520,7 +543,7 @@ public class Runner {
     }
   }
 
-  public static void runExample(String exampleDir, Class clazz, VertxOptions options, DeploymentOptions
+  public static void runExample(String exampleDir, Class<?> clazz, VertxOptions options, DeploymentOptions
       deploymentOptions) {
     runExample(exampleDir + clazz.getPackage().getName().replace(".", "/"), clazz.getName(), options, deploymentOptions);
   }
@@ -564,7 +587,7 @@ public class Runner {
         t.printStackTrace();
       }
     };
-    if (options.isClustered()) {
+    if (options.getEventBusOptions().isClustered()) {
       Vertx.clusteredVertx(options, res -> {
         if (res.succeeded()) {
           Vertx vertx = res.result();

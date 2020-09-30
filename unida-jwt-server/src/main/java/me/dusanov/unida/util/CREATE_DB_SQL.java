@@ -1,4 +1,4 @@
-package me.dusanov.unida.jwt;
+package me.dusanov.unida.util;
 
 import java.util.ArrayList;
 import java.util.List;

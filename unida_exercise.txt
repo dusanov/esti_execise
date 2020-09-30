@@ -159,8 +159,10 @@ Create Angular App to manage Products
 
 INFRA1 Breakdown:
 ===================
-investigate json tokens for authentication/authorization
-come up with the DB - H2?
-use vertx
+investigate json tokens for authentication/authorization *
+come up with the DB - H2? *
+use vertx *
 update articles and product DBs with the basic user info
+	add register / edit profile functionality after user successfully logs in.
 come up with the kafka streams to event source changes from UserDB to ProductDB and ArticleDB
+	stream changes on auth users/roles/perms - edit/new/delete.. reflect those changes in Articles and Prods

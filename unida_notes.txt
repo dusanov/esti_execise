@@ -166,3 +166,17 @@ bin/kafka-console-producer.sh --topic quickstart-events --bootstrap-server local
 
 Start consumer:
 bin/kafka-console-consumer.sh --topic quickstart-events --from-beginning --bootstrap-server localhost:9092
+
+
+09302020
+-==-=-=-=-
+
+result -> {
+    	  if (result.succeeded(user -> System.out.println("User: " + user.principal())))
+		  else if (){
+		  .onSuccess()
+      .onFailure(err -> {
+        // Failed!
+      })
+		  }
+      }
